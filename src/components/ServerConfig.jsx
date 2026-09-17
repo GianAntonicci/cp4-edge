@@ -18,7 +18,7 @@ const ServerConfig = ({onConnect, connected}) => {
                 type="text"
                 value={ip}
                 onChange={(event) => setIp(event.target.value)}
-                placeholder="100.27.187.63"
+                placeholder="Ex: 54.123.45.67"
                 className="w-full bg-gray-700 text-white rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-cyan-500"
             />
         </div>
