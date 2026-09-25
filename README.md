@@ -9,7 +9,7 @@ Sistema IoT que utiliza um ESP32 DevKit para controlar um LED RGB e monitorar a 
 - **ESP32 DevKit V1**: Microcontrolador principal com WiFi e Bluetooth integrados
 - **LED RGB (modulo KY-016)**: LED controlado por PWM nos pinos GPIO18 (vermelho), GPIO19 (verde) e GPIO23 (azul)
 - **Sensor LDR**: Sensor de luminosidade conectado ao pino GPIO34 (entrada analogica)
-- **Display OLED 1.3" SH1106 (128x64)**: Exibe o status de conexao WiFi, MQTT e um bitmap de carinha feliz
+- **Display OLED 2.42" SSD1309 (128x64)**: Exibe o status de conexao WiFi, MQTT e um bitmap de carinha feliz
 
 ## Arquitetura do Sistema
 
@@ -145,7 +145,7 @@ https://wokwi.com/projects/475180427193972737
 
 | Componente | Hardware fisico          | Wokwi                          |
 |------------|--------------------------|----------------------------------|
-| Display    | OLED 1.3" SH1106         | OLED 0.96" SSD1306              |
+| Display    | OLED 2.42" SSD1309        | OLED 0.96" SSD1306              |
 | LED RGB    | Modulo KY-016 (PWM)      | LED RGB catodo comum (digital)  |
 | WiFi SSID  | Rede local               | `Wokwi-GUEST`                   |
 | Controle   | `analogWrite` (PWM)      | `digitalWrite` (HIGH/LOW)       |
