@@ -14,18 +14,20 @@
 //Autor Rev5: Gianluca Antonicci
 //Rev6: 16-09-2026 Alteração de conteúdo do display
 //Autor Rev6: Gianluca Antonicci
+//Rev7: 25-09-2026 Alteração de display
+//Autor Rev7: Gianluca Antonicci
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
-#include <Adafruit_SH110X.h>
+#include <Adafruit_SSD1306.h>
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 #define OLED_RESET -1
 #define SCREEN_ADDRESS 0x3C
 
-Adafruit_SH1106G display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 const uint8_t carinhaFeliz[] PROGMEM = {
   0x00, 0x00, 0x00, 0x00,
@@ -112,7 +114,7 @@ void initWiFi() {
 
     display.clearDisplay();
     display.setTextSize(1);
-    display.setTextColor(SH110X_WHITE);
+    display.setTextColor(SSD1306_WHITE);
     display.setCursor(0, 4);
     display.println(F("Conectando Wi-Fi..."));
     display.setCursor(0, 28);
@@ -127,7 +129,7 @@ void initWiFi() {
     while (WiFi.status() != WL_CONNECTED) {
         display.clearDisplay();
         display.setTextSize(1);
-        display.setTextColor(SH110X_WHITE);
+        display.setTextColor(SSD1306_WHITE);
 
         display.setCursor(0, 4);
         display.print(F("Rede: "));
@@ -149,7 +151,7 @@ void initWiFi() {
 
     display.clearDisplay();
     display.setTextSize(1);
-    display.setTextColor(SH110X_WHITE);
+    display.setTextColor(SSD1306_WHITE);
 
     display.setCursor(0, 4);
     display.println(F("Wi-Fi conectado!"));
@@ -171,7 +173,7 @@ void initMQTT() {
 
     display.clearDisplay();
     display.setTextSize(1);
-    display.setTextColor(SH110X_WHITE);
+    display.setTextColor(SSD1306_WHITE);
     display.setCursor(0, 4);
     display.println(F("Conectando MQTT..."));
     display.setCursor(0, 28);
@@ -184,7 +186,7 @@ void initMQTT() {
     while (!MQTT.connected()) {
         display.clearDisplay();
         display.setTextSize(1);
-        display.setTextColor(SH110X_WHITE);
+        display.setTextColor(SSD1306_WHITE);
 
         display.setCursor(0, 4);
         display.print(F("Broker: "));
@@ -209,7 +211,7 @@ void initMQTT() {
 
     display.clearDisplay();
     display.setTextSize(1);
-    display.setTextColor(SH110X_WHITE);
+    display.setTextColor(SSD1306_WHITE);
 
     display.setCursor(0, 4);
     display.println(F("MQTT conectado!"));
@@ -232,8 +234,8 @@ void setup() {
     initSerial();
 
     Wire.begin(21, 22);
-    if (!display.begin(SCREEN_ADDRESS, true)) {
-        Serial.println(F("Falha ao inicializar o SH1106!"));
+    if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+        Serial.println(F("Falha ao inicializar o SSD1309!"));
         for (;;);
     }
     display.clearDisplay();
@@ -255,7 +257,7 @@ void loop() {
 
     // Status lado esquerdo
     display.setTextSize(1);
-    display.setTextColor(SH110X_WHITE);
+    display.setTextColor(SSD1306_WHITE);
 
     display.setCursor(0, 8);
     display.print(F("WiFi: "));
@@ -272,7 +274,7 @@ void loop() {
         display.println(F("Desconectado"));
 
     // Carinha feliz no canto direito
-    display.drawBitmap(96, 5, carinhaFeliz, 32, 32, SH110X_WHITE);
+    display.drawBitmap(96, 5, carinhaFeliz, 32, 32, SSD1306_WHITE);
 
     display.display();
 }
