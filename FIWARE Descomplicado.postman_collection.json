@@ -167,7 +167,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"devices\": [\n    {\n      \"device_id\": \"lamp001\",\n      \"entity_name\": \"urn:ngsi-ld:Lamp:001\",\n      \"entity_type\": \"Lamp\",\n      \"protocol\": \"PDI-IoTA-UltraLight\",\n      \"transport\": \"MQTT\",\n      \"commands\": [\n        { \"name\": \"red\", \"type\": \"command\" },\n        { \"name\": \"green\", \"type\": \"command\" },\n        { \"name\": \"blue\", \"type\": \"command\" },\n        { \"name\": \"yellow\", \"type\": \"command\" },\n        { \"name\": \"cyan\", \"type\": \"command\" },\n        { \"name\": \"magenta\", \"type\": \"command\" },\n        { \"name\": \"white\", \"type\": \"command\" },\n        { \"name\": \"off\", \"type\": \"command\" }\n      ],\n      \"attributes\": [\n        { \"object_id\": \"s\", \"name\": \"state\", \"type\": \"Text\" },\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"Integer\" }\n      ]\n    }\n  ]\n}",
+              "raw": "{\n  \"devices\": [\n    {\n      \"device_id\": \"lamp001\",\n      \"entity_name\": \"urn:ngsi-ld:Lamp:001\",\n      \"entity_type\": \"Lamp\",\n      \"protocol\": \"PDI-IoTA-UltraLight\",\n      \"transport\": \"MQTT\",\n      \"commands\": [\n        { \"name\": \"red\", \"type\": \"command\" },\n        { \"name\": \"green\", \"type\": \"command\" },\n        { \"name\": \"blue\", \"type\": \"command\" },\n        { \"name\": \"yellow\", \"type\": \"command\" },\n        { \"name\": \"cyan\", \"type\": \"command\" },\n        { \"name\": \"magenta\", \"type\": \"command\" },\n        { \"name\": \"white\", \"type\": \"command\" },\n        { \"name\": \"off\", \"type\": \"command\" }\n      ],\n      \"attributes\": [\n        { \"object_id\": \"s\", \"name\": \"state\", \"type\": \"Text\" },\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"Integer\" },\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"Float\" },\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"Float\" }\n      ]\n    }\n  ]\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -385,7 +385,85 @@
           "response": []
         },
         {
-          "name": "9. Delete Smart Lamp in IoT Agent",
+          "name": "9. Result of  Smart Lamp Temperature",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "fiware-service",
+                "value": "smart",
+                "type": "text"
+              },
+              {
+                "key": "fiware-servicepath",
+                "value": "/",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{url}}:1026/v2/entities/urn:ngsi-ld:Lamp:001/attrs/temperature",
+              "protocol": "http",
+              "host": [
+                "{{url}}"
+              ],
+              "port": "1026",
+              "path": [
+                "v2",
+                "entities",
+                "urn:ngsi-ld:Lamp:001",
+                "attrs",
+                "temperature"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "10. Result of  Smart Lamp Humidity",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "fiware-service",
+                "value": "smart",
+                "type": "text"
+              },
+              {
+                "key": "fiware-servicepath",
+                "value": "/",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://{{url}}:1026/v2/entities/urn:ngsi-ld:Lamp:001/attrs/humidity",
+              "protocol": "http",
+              "host": [
+                "{{url}}"
+              ],
+              "port": "1026",
+              "path": [
+                "v2",
+                "entities",
+                "urn:ngsi-ld:Lamp:001",
+                "attrs",
+                "humidity"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "11. Delete Smart Lamp in IoT Agent",
           "request": {
             "method": "DELETE",
             "header": [
@@ -424,7 +502,7 @@
           "response": []
         },
         {
-          "name": "10. Delete Smart Lamp in Orion",
+          "name": "12. Delete Smart Lamp in Orion",
           "request": {
             "method": "DELETE",
             "header": [
