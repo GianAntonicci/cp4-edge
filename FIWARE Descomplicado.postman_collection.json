@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "a9dc8609-871d-4e85-98bb-a32dcb06ecd3",
+    "_postman_id": "149b4d26-9734-404f-bdd8-b6245ac1527e",
     "name": "FIWARE Descomplicado",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "57787234",
-    "_collection_link": "https://go.postman.co/collection/57787234-a9dc8609-871d-4e85-98bb-a32dcb06ecd3?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/57787234-149b4d26-9734-404f-bdd8-b6245ac1527e?source=collection_link"
   },
   "item": [
     {
@@ -282,7 +282,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"cyan\": {\n      \"type\" : \"command\",\n      \"value\" : \"\"\n  }\n}",
+              "raw": "{\n  \"blue\": {\n      \"type\" : \"command\",\n      \"value\" : \"\"\n  }\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -379,6 +379,73 @@
                 "urn:ngsi-ld:Lamp:001",
                 "attrs",
                 "state"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete registros",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "fiware-service",
+                "value": "smart"
+              },
+              {
+                "key": "fiware-servicepath",
+                "value": "/"
+              },
+              {
+                "key": "accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://{{url}}:1026/v2/registrations/<id>",
+              "protocol": "http",
+              "host": [
+                "{{url}}"
+              ],
+              "port": "1026",
+              "path": [
+                "v2",
+                "registrations",
+                "<id>"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Registros",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "fiware-service",
+                "value": "smart"
+              },
+              {
+                "key": "fiware-servicepath",
+                "value": "/"
+              },
+              {
+                "key": "accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://{{url}}:1026/v2/registrations",
+              "protocol": "http",
+              "host": [
+                "{{url}}"
+              ],
+              "port": "1026",
+              "path": [
+                "v2",
+                "registrations"
               ]
             }
           },
